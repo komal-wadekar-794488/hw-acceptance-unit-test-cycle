@@ -23,3 +23,8 @@ Then /I should see all the movies/ do
     step %{I should see "#{movie.title}"}
   end
 end
+
+Then /the director of "(.*)" should be "(.*)"/ do |e1, e2|
+  movie = Movie.where("title = ?", e1).first
+  movie.director == e2
+end
